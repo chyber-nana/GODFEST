@@ -1,13 +1,16 @@
 import axios from 'axios';
 
 const client = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
-// Automatically attach the JWT token to every request if logged in
-client.interceptors.request.use(config => {
+client.interceptors.request.use((config) => {
   const token = localStorage.getItem('godfest_token');
-  if (token) config.headers.Authorization = `Bearer ${token}`;
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
   return config;
 });
 
