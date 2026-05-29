@@ -68,6 +68,30 @@ export default function Dashboard() {
     }
   };
 
+  const confirmDonation = async (id) => {
+    if (!confirm("Confirm this giving as received?")) return;
+
+    try {
+      await client.patch(`/donate/${id}/confirm`);
+      fetchData();
+    } catch (err) {
+      alert("Failed to confirm giving.");
+    }
+  };
+
+  const ignoreDonation = async (id) => {
+    const reason = prompt("Why are you ignoring this giving request?");
+
+    if (!reason) return;
+
+    try {
+      await client.patch(`/donate/${id}/ignore`, { reason });
+      fetchData();
+    } catch (err) {
+      alert("Failed to ignore giving.");
+    }
+  };
+
   const filteredAttendees = data?.attendees?.filter((a) => {
     const q = search.toLowerCase();
     return (
@@ -143,8 +167,17 @@ export default function Dashboard() {
           {[
             { label: "Registered", value: data?.attendees?.length ?? 0 },
             { label: "Products", value: data?.products?.length ?? 0 },
-            { label: 'Pending Orders', value: data?.orders?.filter(o => o.status === 'pending').length ?? 0 },
-            { label: 'Confirmed Orders', value: data?.orders?.filter(o => o.status === 'confirmed').length ?? 0 },
+            {
+              label: "Pending Orders",
+              value:
+                data?.orders?.filter((o) => o.status === "pending").length ?? 0,
+            },
+            {
+              label: "Confirmed Orders",
+              value:
+                data?.orders?.filter((o) => o.status === "confirmed").length ??
+                0,
+            },
             { label: "Donations", value: data?.donations?.length ?? 0 },
             {
               label: "Total Raised",
@@ -282,6 +315,136 @@ export default function Dashboard() {
                     <p className="text-xs mt-1" style={{ color: "#888" }}>
                       Code: {o.orderCode} · Amount: GH₵ {o.amount}
                     </p>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
+          {/* Pending Giving */}
+          <div>
+            <h2
+              className="font-display displayyy text-xl font-bold mb-5"
+              style={{ color: "#fafafa" }}
+            >
+              Pending Giving
+            </h2>
+
+            <div className="flex flex-col gap-3">
+              {data?.donations?.filter((d) => d.status === "pending").length ===
+                0 && (
+                <p className="text-sm" style={{ color: "#555" }}>
+                  No pending giving.
+                </p>
+              )}
+
+              {data?.donations
+                ?.filter((d) => d.status === "pending")
+                .map((d) => (
+                  <div
+                    key={d._id}
+                    className="rounded-xl p-4"
+                    style={{ background: "#0d0d0d", border: "1px solid #222" }}
+                  >
+                    <p
+                      className="text-sm font-bold"
+                      style={{ color: "#fafafa" }}
+                    >
+                      {d.name}
+                    </p>
+
+                    <p className="text-xs mt-1" style={{ color: "#888" }}>
+                      {d.email} · {d.phone}
+                    </p>
+
+                    <p className="text-xs mt-1" style={{ color: "#888" }}>
+                      Type: {d.type?.toUpperCase()} · Amount: GH₵ {d.amount}
+                    </p>
+
+                    {d.type === "sponsorship" && (
+                      <p className="text-xs mt-1" style={{ color: "#e91e8c" }}>
+                        Area: {d.sponsorshipArea || "General Sponsorship"}
+                      </p>
+                    )}
+
+                    {d.message && (
+                      <p className="text-xs mt-2" style={{ color: "#aaa" }}>
+                        “{d.message}”
+                      </p>
+                    )}
+
+                    <div className="flex gap-2 mt-4">
+                      <button
+                        onClick={() => confirmDonation(d._id)}
+                        className="text-xs px-3 py-1.5 rounded-full"
+                        style={{
+                          background: "#0a2a0a",
+                          color: "#6abf6a",
+                          border: "1px solid #2a6a2a",
+                        }}
+                      >
+                        Confirm
+                      </button>
+
+                      <button
+                        onClick={() => ignoreDonation(d._id)}
+                        className="text-xs px-3 py-1.5 rounded-full"
+                        style={{
+                          background: "#2a0a0a",
+                          color: "#bf6a6a",
+                          border: "1px solid #6a2a2a",
+                        }}
+                      >
+                        Ignore
+                      </button>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+
+          {/* Confirmed Giving */}
+          <div>
+            <h2
+              className="font-display displayyy text-xl font-bold mb-5"
+              style={{ color: "#fafafa" }}
+            >
+              Confirmed Giving
+            </h2>
+
+            <div className="flex flex-col gap-3">
+              {data?.donations?.filter((d) => d.status === "confirmed")
+                .length === 0 && (
+                <p className="text-sm" style={{ color: "#555" }}>
+                  No confirmed giving.
+                </p>
+              )}
+
+              {data?.donations
+                ?.filter((d) => d.status === "confirmed")
+                .map((d) => (
+                  <div
+                    key={d._id}
+                    className="rounded-xl p-4"
+                    style={{ background: "#0d0d0d", border: "1px solid #222" }}
+                  >
+                    <p
+                      className="text-sm font-bold"
+                      style={{ color: "#fafafa" }}
+                    >
+                      {d.name}
+                    </p>
+
+                    <p className="text-xs mt-1" style={{ color: "#888" }}>
+                      Type: {d.type?.toUpperCase()} · Amount: GH₵ {d.amount}
+                    </p>
+
+                    {d.type === "sponsorship" && (
+                      <p className="text-xs mt-1" style={{ color: "#e91e8c" }}>
+                        Area: {d.sponsorshipArea || "General Sponsorship"}
+                      </p>
+                    )}
                   </div>
                 ))}
             </div>
