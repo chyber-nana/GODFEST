@@ -37,7 +37,7 @@ export default function Register() {
       <div className="max-w-xl mx-auto">
 
         <p className="text-xs tracking-widest mb-3 text-center" style={{ color: '#e91e8c' }}>JULY 2026</p>
-        <h1 className="font-display text-4xl md:text-5xl font-bold text-center mb-3"
+        <h1 className="font-display displayyy text-4xl md:text-5xl font-bold text-center mb-3"
           style={{ color: '#fafafa' }}>Register to Attend</h1>
         <p className="text-center text-sm mb-12" style={{ color: '#888' }}>
           Secure your free spot at Godfest 2026.

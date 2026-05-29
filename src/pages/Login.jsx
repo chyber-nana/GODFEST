@@ -28,7 +28,7 @@ export default function Login() {
     <main className="min-h-screen flex items-center justify-center px-6"
       style={{ background: '#0a0a0a' }}>
       <div className="w-full max-w-sm">
-        <h1 className="font-display text-3xl font-bold text-center mb-8"
+        <h1 className="font-display displayyy text-3xl font-bold text-center mb-8"
           style={{ color: '#fafafa' }}>Admin Login</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4"
           style={{ background: '#0d0d0d', border: '1px solid #e91e8c22', borderRadius: '20px', padding: '32px' }}>

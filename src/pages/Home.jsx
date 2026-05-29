@@ -24,7 +24,7 @@ function useCountdown(target) {
 function CountBox({ value, label }) {
   return (
     <div className="flex flex-col items-center">
-      <div className="text-4xl md:text-6xl font-display font-bold"
+      <div className="text-4xl md:text-6xl font-display displayyy font-bold"
         style={{ color: '#e91e8c' }}>
         {String(value ?? 0).padStart(2, '0')}
       </div>
@@ -48,7 +48,7 @@ export default function Home() {
         <p className="text-xs tracking-[0.4em] mb-6 font-medium"
           style={{ color: '#e91e8c' }}>JULY 2026 · ACCRA, GHANA</p>
 
-        <h1 className="font-display font-black leading-none mb-6"
+        <h1 className="font-display displayyy font-black leading-none mb-6"
           style={{ fontSize: 'clamp(3.5rem, 12vw, 9rem)', color: '#fafafa', letterSpacing: '0.15em' }}>
           GOD<span style={{ color: '#e91e8c', letterSpacing: '0.15em' }}>FEST</span>
         </h1>
@@ -86,7 +86,7 @@ export default function Home() {
       <section className="py-24 px-6" style={{ background: '#0d0d0d' }}>
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xs tracking-widest mb-4" style={{ color: '#e91e8c' }}>ABOUT</p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-8"
+          <h2 className="font-display displayyy text-4xl md:text-5xl font-bold mb-8"
             style={{ color: '#fafafa' }}>
             What is Godfest?
           </h2>
@@ -103,7 +103,7 @@ export default function Home() {
       <section className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-widest mb-4 text-center" style={{ color: '#e91e8c' }}>WHAT TO EXPECT</p>
-          <h2 className="font-display text-4xl font-bold text-center mb-14"
+          <h2 className="font-display displayyy text-4xl font-bold text-center mb-14"
             style={{ color: '#fafafa' }}>Program Highlights</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -115,7 +115,7 @@ export default function Home() {
               <div key={title} className="p-8 rounded-2xl text-center"
                 style={{ background: '#111', border: '1px solid #e91e8c22'}}>
                 <div className="text-3xl mb-4" style={{ color: '#e91e8c' }}>{icon}</div>
-                <h3 className="font-display text-xl font-bold mb-3" style={{ color: '#fafafa', letterSpacing: '6px'  }}>{title}</h3>
+                <h3 className="font-display displayyy text-xl font-bold mb-3" style={{ color: '#fafafa', letterSpacing: '6px'  }}>{title}</h3>
                 <p className="text-sm leading-relaxed" style={{ color: '#888' }}>{desc}</p>
               </div>
             ))}
@@ -126,7 +126,7 @@ export default function Home() {
       {/* Final CTA */}
       <section className="py-24 px-6 text-center"
         style={{ background: 'linear-gradient(to bottom, #0d0d0d, #1a0010)' }}>
-        <h2 className="font-display text-4xl md:text-5xl font-bold mb-6"
+        <h2 className="font-display displayyy text-4xl md:text-5xl font-bold mb-6"
           style={{ color: '#fafafa' }}>
           Ready to be part of it?
         </h2>

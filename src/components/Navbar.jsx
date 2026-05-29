@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="font-display text-2xl font-bold"
+        <Link to="/" className="font-display displayyy text-2xl font-bold"
           style={{ color: '#e91e8c', letterSpacing: '0.25em' }}>
           GODFEST
         </Link>

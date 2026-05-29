@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-8">
 
         <div>
-          <p className="font-display text-2xl font-bold mb-2"
+          <p className="font-display displayyy text-2xl font-bold mb-2"
             style={{ color: '#e91e8c' }}>GODFEST</p>
           <p className="text-sm" style={{ color: '#888' }}>July 2026 — A celebration of faith.</p>
         </div>
