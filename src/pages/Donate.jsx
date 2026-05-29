@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import client from '../api/client';
 
-const MOMO_NUMBER = "0240000000";
-const MOMO_NAME = "GODFEST";
+const MOMO_NUMBER = "0271806600";
+const MOMO_NAME = "Kwame Amoakohene";
 
 const SPONSORSHIP_AREAS = [
   'Sound and Media',

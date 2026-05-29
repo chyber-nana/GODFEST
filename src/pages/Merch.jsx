@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import client from "../api/client";
 
 const MOMO_NUMBER = "0271806600";
-const MOMO_NAME = "GODFEST";
+const MOMO_NAME = "Kwame Amoakohene";
 
 export default function Merch() {
   const [products, setProducts] = useState([]);
